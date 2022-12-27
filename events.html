@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>jQuery Events</title>
+</head>
+<body>
+    <input type="text" id="inp">
+    <p>This is a message.</p>
+    <button id="btn">Click Me</button>
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+
+        // Click event
+        $('#btn').click(function(){
+            $('p').html("You clicked the button...");
+        })
+
+        // double click event
+        $('#btn').dblclick(function(){
+            $('p').html("You double clicked the button...");
+        })
+
+        // mouse enter
+        $('#btn').mouseenter(function(){
+            $('p').html("mouse entered on the button...");
+        })
+
+        // mouse leave
+        $('#btn').mouseleave(function(){
+            $('p').html("mouse leave from the button...");
+        })
+
+        // keypress event
+        $('#inp').keypress(function(){
+            $('p').html("Input field changed.");
+        })
+
+        // keydown
+        $('#inp').keydown(function(){
+            $('p').html("Key down.");
+        })
+
+        // keyup
+        $('#inp').keyup(function(){
+            $('p').html("Key up.");
+        })
+    });
+</script>
