@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Tree Traversing</title>
+</head>
+<body>
+    <div>
+        <ul class="list">
+            <li>
+                <span>span1</span><span>span2</span>
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+                <h3>Heading 3</h3>
+                <h4>Heading 4</h4>
+                <h5>Heading 5</h5>
+                <h6>Heading 6</h6>
+                <p>Paragraph</p>
+            </li>
+            <li>
+                <b>b tag</b>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+        // The parent method returns the only one level up elements.
+        $('b').parent().css({"background": "red", "border": "2px solid green"});
+        
+        // The parents method returns all the level up elements till the html tag.
+        $('span').parents().css({"color": "red", "border": "2px solid green"});
+        $('b').parentsUntil("div").css({"background": "red", "border": "2px solid green", "margin":"20px"});
+
+        // The children method only traverses a single level down the DOM tree.
+        $('div').children().css({"height":"200px", "width":"200px"});
+
+        // The following example returns all <p> elements with the class name "first", that are direct children of <div>
+        $("div").children("ul.list").append("<li>Another list item</li>");
+
+        // The find() method returns descendant elements of the selected element, all the way down to the last descendant.
+        $('div').find('span').html("This is a span text<br>").css("color", "yellow");
+
+        $('h2').siblings().css("color", "yellow");
+        $('h2').siblings('span').css("color", "yellow");
+
+        $('h2').next().css("color", "green");
+        $('h2').nextAll().css("color", "yellow");
+        $('h2').nextUntil('h4').css("color", "green");
+
+        $('h3').prev();
+        $('h3').prevAll();
+        $('h3').prevUntil('h1');
+
+        $('div').first(); // It returns the first div element in the document.
+        $('div').last(); // It returns the last div element in the document.
+
+        // The eq() method returns an element with a specific index number of the selected elements.
+
+        // The index numbers start at 0, so the first element will have the index number 0 and not 1. The following example selects the second <p> element (index number 1):
+        $('p').eq('1');
+
+        $('ul').filter('.list'); // It returns the ul tag which has the list class.
+
+        // The not() method returns all elements that do not match the criteria.
+
+        // Tip: The not() method is the opposite of filter().
+        $('div').not('.list');
+
+    })
+</script>
