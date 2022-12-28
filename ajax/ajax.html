@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>AJAX with jQuery</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+        $('#div1').load("demo.html");
+        $('#div2').load("demo.html #list", function(response, status, xhr){
+            if(status == "success")
+                alert("Content Loaded Successfully...");
+            else
+                alert(xhr.status + " : " + xhr.statusText);
+        });
+        $.get("demo.html", function(data, status){
+            alert("Data : " + data + "\nStatus : " + status);
+        })
+
+        $.post("demo.asp", {
+            name:"Amzad",
+            city:"Muzaffarpur"
+        },
+        function(data, status){
+            alert("Data : " + data + "\nStatus : " + status);
+        })
+    })
+</script>
